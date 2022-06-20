@@ -45,5 +45,21 @@ app.get('/abracadabra/juego/:usuario', (req,res) => {
 // imagen de Voldemort.
 
 
+app.get('abracadabra/conejo/:n', (req, res) => {
+    let random = Math.floor(Math.random() * 4) + 1;
+    if(random == req.params.n) {
+        res.send("<img src='/conejito.jpeg'>");
+    } else {
+        res.send("<img src='/voldemort.jpeg'>");
+    }
+});
+
+// Crear una ruta genérica que devuelva un mensaje diciendo "Esta página no existe..."
+// al consultar una ruta que no este definida en el servidor.
+
+app.get('*', (req, res) => {
+    res.send("Esta página no existe...");
+});
+
 
 
