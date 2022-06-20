@@ -25,3 +25,25 @@ app.get('/abracadabra/usuarios/', (req, res) => {
 // En caso de ser exitoso, permitir el paso a la ruta GET correspondiente, de lo contrario
 // devolver la imagen "who.jpeg".
 
+app.use('/abracadabra/juego/:usuario', (req, res, next) => {
+    let usuario = req.params.usuario;
+    if(listado.usuarios.some(item => item == usuario)) {
+        next();
+    } else {
+        res.send("<img src='/who.jpeg'>")
+    }
+});
+
+app.get('/abracadabra/juego/:usuario', (req,res) => {
+    res.sendFile(`${__dirname}/index.html`);
+});
+
+// Crear una ruta /abracadabra/conejo/:n que valide si el parámetro "n" coincide con el 
+// número generado de forma aleatoria.
+
+// En caso de ser exitoso, devolver la imagen del conejo, de lo contrario devolver la 
+// imagen de Voldemort.
+
+
+
+
